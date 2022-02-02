@@ -1,7 +1,7 @@
 # Проект Calculator-Swap
 \#Проект \#HTML5 \#SCSS/CSS \#JS/ES6+ 
 
-[**Перейти на сайт**](https://cyber-wf13.github.io/site-calculator/)
+[**Перейти на сайт**](https://cyber-wf13.github.io/calculator-swap/)
 
 ***
 ### Описание сайта
