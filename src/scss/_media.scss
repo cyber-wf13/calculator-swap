@@ -1,0 +1,124 @@
+@media (max-width: 992px) {
+  .header {
+    padding: 15px 10px;
+    &__menu-hamburger {
+      display: block;
+    }
+    &__btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 48px;
+      padding: 0px 6px;
+      background: transparent;
+      font-size: 0px;
+      &:focus{
+        box-shadow: none
+      }
+    }
+    &__btn-img{
+      height: 30px;
+      width: 30px;
+      margin: 0px;
+      svg{
+        fill: #fff;
+      }
+    }
+  }
+  .menu-hamburger{
+    display: block;
+  }
+  .menu {
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    &__list {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    &__list-item {
+      padding: 15px 15px;
+      transform: scaleY(0);
+      transition: 0.2s;
+    }
+  }
+  .calc {
+    &__wrapper {
+      width: auto;
+      margin: 0 15px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .header{
+    &__box-wrapper{
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__box-btn{
+      padding: 0;
+    }
+    &__box-img{
+      margin: 0;
+    }
+  }
+  .calc {
+    &__wrapper-top {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__wrapper-bottom {
+      flex-direction: column;
+      align-items: center;
+    }
+    &__btn-rotate {
+      margin: 15px 0px;
+      transform: rotateZ(90deg);
+      &:hover{
+        transform: rotateZ(-90deg);
+      }
+    }
+    &__btn-connect {
+      width: 100%;
+    }
+  }
+  .calc-input {
+    max-width: 100%;
+    width: 100%;
+  }
+  .calc-text__input-items {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .calc-text {
+    &__box {
+      width: 100%;
+      justify-content: space-between;
+      padding: 5px 0px;
+    }
+    &__box-label {
+      width: 142px;
+    }
+    &__box-input {
+      max-width: 160px;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .calc-text {
+    &__box-label {
+      min-width: 40px;
+      margin: 0px 10px 0px 0px;
+    }
+    &__box-input {
+      max-width: 48px;
+    }
+  }
+  .header__box-btn{
+    font-size: 11.33px;
+  }
+}

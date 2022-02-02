@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>Calculator-Swap</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="menu-hamburger" role="button" tabindex="0" data-active="false">
+      <div class="menu-hamburger__row"></div>
+      <div class="menu-hamburger__row"></div>
+      <div class="menu-hamburger__row"></div>
+    </div>
+    <div class="header__wrapper">
+      <a href="index.html" class="header__link"><img class="header__logo logo" src="images/logo.svg" alt="logo"></a>
+      <nav class="header__menu menu">
+        <ul class="menu__list">
+          <li class="menu__list-item menu__list-item--active">Swap</li>
+          <li class="menu__list-item">Cover</li>
+          <li class="menu__list-item">Stake</li>
+          <li class="menu__list-item">Claims</li>
+          <li class="menu__list-item">Governance</li>
+          <li class="menu__list-item">Rewards</li>
+          <li class="menu__list-item">Stats</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__box">
+      <h3 class="header__box-title">Choose your wallet</h3>
+      <div class="header__box-wrapper">
+        <button class="header__box-btn">
+          <img src="images/metamask.svg" alt="Metamask" class="header__box-img">Metamask</button>
+        <button class="header__box-btn">
+          <img src="images/wallet-connect.svg" alt="Wallet Connect" class="header__box-img">Wallet Connect</button>
+      </div>
+    </div>
+    <button class="header__btn" data-active="disactive">
+      <div class="header__btn-img">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 32 32" transform="rotate(360)" fill="rgb(174, 240, 200)"><path d="M26.749 24.93A13.99 13.99 0 102 16a13.899 13.899 0 003.251 8.93l-.02.017c.07.084.15.156.222.239.09.103.187.2.28.3.28.304.568.596.87.87.092.084.187.162.28.242.32.276.649.538.99.782.044.03.084.069.128.1v-.012a13.901 13.901 0 0016 0v.012c.044-.031.083-.07.128-.1.34-.245.67-.506.99-.782.093-.08.188-.159.28-.242.302-.275.59-.566.87-.87.093-.1.189-.197.28-.3.071-.083.152-.155.222-.24zM16 8a4.5 4.5 0 11-4.5 4.5A4.5 4.5 0 0116 8zM8.007 24.93A4.996 4.996 0 0113 20h6a4.996 4.996 0 014.993 4.93 11.94 11.94 0 01-15.986 0z"></path></svg>
+      </div>Connect wallet</button>
+  </header>
+
+  <section class="main-page">
+    <div class="container">
+      <div class="main-page__text">
+        <h1 class="main-page__title">Swap</h1>
+        <span class="main-page__inner-text">Buy or sell NXM tokens. NXM tokens grant you proportional power in the
+          mutual.</span>
+      </div>
+      <div class="calc">
+          <div class="calc__wrapper">
+            <div class="calc__wrapper-top">
+              <div class="calc__input calc-input">
+                <div class="calc-input__top">
+                  <span class="calc-input__top-text">You pay</span>
+                  <button class="calc-input__top-btn">Max</button>
+                </div>
+                <div class="calc-input__middle">
+                  <input class="calc-input__form " type="text" name="" placeholder="0">
+                  <div class="select">
+                    <!-- Значення для відображення -->
+                    <div class="select__header">
+                      <!-- Базове значення -->
+                      <span class="select__current">TRX</span>
+                      <!-- Іконка елементу управління (стрілка, хрестик і т.д.) -->
+                      <div class="select__icon"></div>
+                    </div>
+                    <!-- Елементи <option> -->
+                    <div class="select__items">
+                      <!-- <option> -->
+                      <input class="select__item-input" id="selectName0" type="checkbox" value="0" name="selectName" />
+                      <label class="select__item" for="selectName0">
+                        TRX</label>
+                      <input class="select__item-input" id="selectName1" type="checkbox" value="1" name="selectName2" />
+                      <label class="select__item" for="selectName1">NXM</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="calc-input__bottom">
+                  <span class="calc-input__bottom-text">≈$0</span>
+                </div>
+              </div>
+
+              <button class="calc__btn-rotate"></button>
+
+              <div class="calc__input calc-input calc-input__receive">
+                <div class="calc-input__top">
+                  <span class="calc-input__top-text">You receive</span>
+                </div>
+                <div class="calc-input__middle">
+                  <input class="calc-input__form" type="text" name=""  placeholder="0" disabled>
+                  <span class="calc-input__text">NXM</span>
+                </div>
+                <div class="calc-input__bottom">
+                  <span class="calc-input__bottom-text">≈$0</span>
+                </div>
+              </div>
+            </div>
+            <div class="calc__wrapper-bottom">
+              <div class="calc__wrapper-row calc-text">
+                <span class="calc-text__title">Rate</span>
+                <div class="calc-text__inner-text">
+                  1 NXM ≈ <span class="calc-text__count">1084,1</span> TRX
+                </div>
+              </div>
+              <div class="calc__wrapper-row calc-text">
+                <span class="calc-text__title">Inverse rate</span>
+                <div class="calc-text__inner-text">
+                  1 TRX ≈ <span class="calc-text__count">0.06494</span> NXM
+                </div>
+              </div>
+              <div class="calc__wrapper-row calc-text calc-text__input-items">
+                <span class="calc-text__title">Slippage tolerance:</span>
+                <div class="calc-text__box">
+                  <input class="calc-text__box-radio" type="radio" name="tolerance" id="tolerance-0.1" checked value="0.1">
+                  <label class="calc-text__box-label" for="tolerance-0.1">0.1%</label>
+                  <input class="calc-text__box-radio" type="radio" name="tolerance" id="tolerance-0.5" value="0.5">
+                  <label class="calc-text__box-label" for="tolerance-0.5">0.5%</label>
+                  <input class="calc-text__box-radio" type="radio" name="tolerance" id="tolerance-1.0" value="1.0">
+                  <label class="calc-text__box-label" for="tolerance-1.0">1.0%</label>
+                  <span class="calc-text__box-input--after">
+                    <input type="text" class="calc-text__box-input" placeholder="0.1">
+                  </span>
+                </div>
+              </div>
+              <div class="calc__wrapper-row calc-text">
+                <span class="calc-text__title">Minimum received:</span>
+                <div class="calc-text__inner-text">
+                  <span class="calc-text__finally-count">0.00000</span> NXM
+                </div>
+              </div>
+              <div class="calc__message calc__message--error">
+                <div class="calc__message-pointer calc__message-pointer--error"></div>
+                <p class="calc__message-text">Insufficient funds</p>
+              </div>
+              <div class="calc__message calc__message--warning">
+                <div class="calc__message-pointer calc__message-pointer--warning"></div>
+                <p class="calc__message-text">Connect your wallet to grant <span>TokenController</span> permission over your NXM.</p>
+              </div>
+              <button class="calc__btn-connect">Connect wallet</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+  </footer>
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
