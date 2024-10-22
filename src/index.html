@@ -57,16 +57,15 @@
         <span class="main-page__inner-text">Buy or sell NXM tokens. NXM tokens grant you proportional power in the
           mutual.</span>
       </div>
-      <div class="calc">
+      <div class="calc" id="calc">
         <div class="calc__wrapper">
           <div class="calc__wrapper-top">
             <div class="calc__input calc-input">
               <div class="calc-input__top">
                 <span class="calc-input__top-text">You pay</span>
-                <button class="calc-input__top-btn">Reset</button>
               </div>
               <div class="calc-input__middle">
-                <input class="calc-input__form " type="text" name="" placeholder="0">
+                <input class="calc-input__form " id="pay" type="text" name="pay" placeholder="0">
                 <div class="select">
                   <!-- Значення для відображення -->
                   <div class="select__header">
@@ -86,23 +85,37 @@
                   </div>
                 </div>
               </div>
-              <div class="calc-input__bottom">
-                <span class="calc-input__bottom-text">≈$0</span>
-              </div>
             </div>
 
-            <button class="calc__btn-rotate"></button>
+            <div class="calc__buttons">
+              <button class="calc__btn-rotate" id="rotate"></button>
+              <button class="calc__btn-reset" id="reset">Reset</button>
+            </div>
 
-            <div class="calc__input calc-input calc-input__receive">
+            <div class="calc__input calc-input">
               <div class="calc-input__top">
                 <span class="calc-input__top-text">You receive</span>
               </div>
               <div class="calc-input__middle">
-                <input class="calc-input__form" type="text" name="" placeholder="0" disabled>
-                <span class="calc-input__text">NXM</span>
-              </div>
-              <div class="calc-input__bottom">
-                <span class="calc-input__bottom-text">≈$0</span>
+                <input class="calc-input__form" id="receive" type="text" name="receive" placeholder="0">
+                <div class="select">
+                  <!-- Значення для відображення -->
+                  <div class="select__header">
+                    <!-- Базове значення -->
+                    <span class="select__current">TRX</span>
+                    <!-- Іконка елементу управління (стрілка, хрестик і т.д.) -->
+                    <div class="select__icon"></div>
+                  </div>
+                  <!-- Елементи <option> -->
+                  <div class="select__items">
+                    <!-- <option> -->
+                    <input class="select__item-input" id="selectName0" type="checkbox" value="0" name="selectName" />
+                    <label class="select__item" for="selectName0">
+                      TRX</label>
+                    <input class="select__item-input" id="selectName1" type="checkbox" value="1" name="selectName2" />
+                    <label class="select__item" for="selectName1">NXM</label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

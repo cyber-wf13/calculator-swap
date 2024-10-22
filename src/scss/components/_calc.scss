@@ -15,7 +15,6 @@
   &__wrapper-top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
       flex-direction: column;
       justify-content: space-between;
@@ -38,6 +37,12 @@
     width: 100%;
     margin-top: 15px;
   }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
   &__btn-rotate {
     border: none;
     background-color: transparent;
@@ -59,6 +64,25 @@
         transform: rotateZ(-90deg);
       }
     }
+  }
+  &__btn-reset {
+    border: none;
+    border-radius: 45px;
+    background-color: transparent;
+    color: $active;
+    outline: none;
+    margin: 5px 0;
+    transition: 0.3s;
+    cursor: pointer;
+    // &:focus {
+    //   background: $active;
+    //   box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
+    //   color: #fff;
+    // }
+    // &:hover {
+    //   background: $active;
+    //   color: #fff;
+    // }
   }
   &__btn-connect {
     border: 1px solid $borderColor;
