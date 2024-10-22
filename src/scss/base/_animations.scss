@@ -1,0 +1,20 @@
+@keyframes pointerErrorPulsar {
+  0% {
+    box-shadow: rgb(254, 159, 170) 0px 0px 0px 0px;
+  }
+  50% {
+  }
+  100% {
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 12px;
+  }
+}
+@keyframes pointerWarningPulsar {
+  0% {
+    box-shadow: rgb(245, 220, 181) 0px 0px 0px 0px;
+  }
+  50% {
+  }
+  100% {
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 12px;
+  }
+}

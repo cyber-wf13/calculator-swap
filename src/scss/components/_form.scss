@@ -1,0 +1,20 @@
+.form-success {
+  border-color: #50c392 !important;
+  box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px !important;
+}
+.form-error {
+  border: 1px solid #d0021b !important;
+  color: #d0021b !important;
+  box-shadow: #fe9faa 0px 0px 0px 3px !important;
+}
+.form-active {
+  border-color: #50c392;
+  box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
+}
+.form-warning {
+  &:focus {
+    color: #f5a623 !important;
+    border-color: #f5a623 !important;
+    box-shadow: #f5dcb5 0px 0px 0px 3px !important;
+  }
+}

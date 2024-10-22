@@ -1,0 +1,96 @@
+.calc-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      width: 100%;
+      justify-content: space-between;
+      padding: 5px 0px;
+    }
+  }
+  &__box-radio {
+    position: absolute;
+    left: -9999px;
+    &:checked + .calc-text__box-label {
+      background: $gradient;
+      color: #fff;
+    }
+  }
+  &__box-label {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid $borderColor;
+    border-radius: 22.5px;
+    font-size: 13.33px;
+    line-height: 1em;
+    background: transparent;
+    color: $borderColor;
+    max-height: 30px;
+    width: 60px;
+    margin: 0px 15px 0px 0px;
+    padding: 7px 0px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background: $gradient;
+      color: #fff;
+    }
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      width: 142px;
+    }
+    @media (max-width: (425px - 0.02)) {
+      min-width: 40px;
+      margin: 0px 10px 0px 0px;
+    }
+  }
+  &__box-label--active {
+    background: $gradient;
+    color: #fff;
+  }
+  &__box-input {
+    position: relative;
+    border: 1px solid rgba(#000, 0.3);
+    border-radius: 22.5px;
+    font-size: 13.33px;
+    line-height: 1em;
+    background-color: transparent;
+    height: 30px;
+    width: 60px;
+    text-align: right;
+    padding: 0px 23px 0px 0px;
+    outline: none;
+    &:focus {
+      border-color: rgb(80, 195, 146);
+      box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
+    }
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      max-width: 160px;
+    }
+    @media (max-width: (425px - 0.02)) {
+      max-width: 48px;
+    }
+  }
+  &__box-input--after {
+    position: relative;
+    &::after {
+      content: "%";
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+  }
+}
+
+@media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+  .calc-text__input-items {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

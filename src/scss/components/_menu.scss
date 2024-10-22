@@ -1,0 +1,56 @@
+.menu {
+  padding-left: 15px;
+  @media (max-width: (map.get($breakpoints, "lg") - 0.02)) {
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+  }
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "OpenSans-Regular", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 2em;
+    @media (max-width: (map.get($breakpoints, "lg") - 0.02)) {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+  &__list-item {
+    padding: 0px 7.5px;
+    transition: 0.2s;
+    cursor: pointer;
+    @media (max-width: (map.get($breakpoints, "lg") - 0.02)) {
+      padding: 15px 15px;
+      transform: scaleY(0);
+      transition: 0.2s;
+    }
+    &:hover {
+      transform: scale(1.1);
+      color: #aef0c8;
+    }
+  }
+  &__list-item--active {
+    color: $active;
+    transform: scale(1.1);
+  }
+}
+
+.menu--mobile {
+  z-index: 50;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 0;
+  right: 0;
+  height: 480px;
+  background-color: rgba(30, 33, 40, 0.88);
+  backdrop-filter: blur(5px);
+  .menu__list-item {
+    transform: scaleY(1);
+  }
+}

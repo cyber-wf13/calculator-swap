@@ -1,0 +1,30 @@
+.menu-hamburger {
+  display: none;
+  cursor: pointer;
+  height: 48px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+  user-select: none;
+  width: 48px;
+  outline: none;
+  transform: none;
+  @media (max-width: (map.get($breakpoints, "lg") - 0.02)) {
+    display: block;
+  }
+  &__row {
+    background: rgb(252, 253, 253);
+    height: 2px;
+    left: 12px;
+    position: absolute;
+    width: 25px;
+    top: 15px;
+    transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+    transform: none;
+    &:nth-child(2) {
+      top: 23px;
+    }
+    &:nth-child(3) {
+      top: 31px;
+    }
+  }
+}

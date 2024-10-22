@@ -1,0 +1,41 @@
+// Параметри контейнера та блоків
+$containerPadding: 15;
+$maxWidth: 1440;
+$maxWidthContainerCount: 1200;
+$maxWidthContainer: $maxWidthContainerCount + ($containerPadding * 2);
+
+// Змінні основних кольорів
+$active: #50c392;
+$gradient: linear-gradient(-45deg, #50c392, #1eab89, #50c392) 0% 0% / 200%;
+$accent: #1e2128;
+$text: #505050;
+$borderColor: #1eab89;
+
+// Змінні геометрії
+$radius: rem(5);
+
+// Змінні параметрів основного шрифту
+$base-font: "Times-New-Roman", sans-serif;
+$base-font-weight: 500;
+$base-font-size: rem(16);
+$base-font-color: #000;
+
+// Карта базових брейкпоінтів
+$breakpoints: (
+  "xxl": 1400px,
+  "xl": 1200px,
+  "lg": 992px,
+  "md": 768px,
+  "sm": 576px,
+  "xs": 320px
+);
+
+// Карта для визначення ширинах на базових брекпоінтах
+$container-widths: (
+  "xxl": $maxWidthContainer + px,
+  "xl": 1140px,
+  "lg": 960px,
+  "md": 720px,
+  "sm": 540px,
+  "xs": 100%
+);

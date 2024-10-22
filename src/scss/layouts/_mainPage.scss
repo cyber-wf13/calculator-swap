@@ -1,0 +1,19 @@
+.main-page {
+  margin-bottom: 110px;
+  &__text {
+    margin: 30px 0 45px;
+  }
+  &__title {
+    font-family: "OpenSans-SemiBold", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1em;
+    padding: 0px 0px 15px;
+  }
+  &__inner-text {
+    font-family: "OpenSans-SemiBold", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 2em;
+  }
+}

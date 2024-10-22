@@ -1,0 +1,118 @@
+.calc {
+  border-radius: 15px;
+  box-shadow: rgb(228, 232, 239) 4px 4px 24px 0px;
+  padding: 30px 0px;
+  &__wrapper {
+    // 900px
+    width: 62.5%;
+    margin: 0 auto;
+
+    @media (max-width: (map.get($breakpoints, "lg") - 0.02)) {
+      width: auto;
+      margin: 0 15px;
+    }
+  }
+  &__wrapper-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__wrapper-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-family: "OpenSans-Regular", sans-serif;
+    font-weight: 400;
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__wrapper-row {
+    width: 100%;
+    margin-top: 15px;
+  }
+  &__btn-rotate {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    min-height: 22.5px;
+    min-width: 22.5px;
+    background-image: url("../img/exchange.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.2s ease-out 0s;
+    margin: 0px 15px;
+    &:hover {
+      transform: rotate(180deg);
+    }
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      margin: 15px 0px;
+      transform: rotateZ(90deg);
+      &:hover {
+        transform: rotateZ(-90deg);
+      }
+    }
+  }
+  &__btn-connect {
+    border: 1px solid $borderColor;
+    border-radius: 22.5px;
+    font-size: 18px;
+    line-height: 1em;
+    background: transparent;
+    color: $borderColor;
+    height: 45px;
+    width: 255px;
+    margin: 20px 0px 0px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background: linear-gradient(-45deg, #50c392, #1eab89) right center;
+      color: #fff;
+    }
+    @media (max-width: (map.get($breakpoints, "md") - 0.02)) {
+      width: 100%;
+    }
+  }
+  &__message {
+    display: none;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: flex-start;
+    margin: 15px 0px 0px;
+    font-size: 15px;
+    line-height: 2em;
+    padding-left: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 15px;
+      animation: 1s linear 0s infinite normal none running pointerErrorPulsar;
+    }
+  }
+
+  &__message--error {
+    color: #d0021b;
+    &::before {
+      background-color: #d0021b;
+    }
+  }
+  &__message--warning {
+    &::before {
+      background-color: #f5a623;
+    }
+  }
+}

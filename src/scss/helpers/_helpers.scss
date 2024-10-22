@@ -1,0 +1,7 @@
+// Стандартна бібліотека sass
+@use "sass:map";
+@use "sass:math";
+// Створення міксинів та змін
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/vars";

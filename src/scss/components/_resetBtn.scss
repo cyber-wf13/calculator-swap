@@ -1,0 +1,12 @@
+.reset-btn--error {
+  color: #d0021b !important;
+  &:focus {
+    background: #d0021b !important;
+    box-shadow: rgb(254, 159, 170) 0px 0px 0px 3px !important;
+    color: #fff !important;
+  }
+  &:hover {
+    background: #d0021b !important;
+    color: #fff !important;
+  }
+}

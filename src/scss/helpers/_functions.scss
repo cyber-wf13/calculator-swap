@@ -1,0 +1,17 @@
+// Задає властивіть у відсотках
+@function prc($valOne, $valTwo) {
+  $result: math.div($valOne, $valTwo) * 100%;
+  @return $result;
+}
+
+// Задає властивіть у rem
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result;
+}
+
+// Задає властивіть у em
+@function em($px) {
+  $result: math.div($px, 16) + em;
+  @return $result;
+}
