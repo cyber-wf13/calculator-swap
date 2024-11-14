@@ -45,15 +45,15 @@
     background-color: #fcfdfd;
     box-shadow: #c8d2e1 0px 1px 4px 0px;
     position: absolute;
-    // top: -15px;
-    top: 50px;
-    display: flex;
+    top: -15px;
+    // top: 50px;
+    // display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    // display: none;
+    display: none;
     z-index: 999;
-    // width: 75px;
+    width: 75px;
   }
   &__item {
     border-radius: 15px;
@@ -80,7 +80,7 @@
   }
 }
 .select.is-active .select__items {
-  display: block;
+  display: flex;
 }
 .active {
   z-index: 70 !important;
