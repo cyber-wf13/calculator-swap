@@ -1,5 +1,5 @@
 import { ConstructDOM } from "../DOM/ConstructDOM";
-import { generateUniqId } from "../utils";
+import { generateUniqId, closeByAnyClick } from "../utils";
 
 export class Select extends ConstructDOM {
   constructor(selectItems) {
@@ -11,13 +11,17 @@ export class Select extends ConstructDOM {
     this.createSelectItems();
     this.head = this.createSelectHead();
     this.selectedValue = this.headText;
-    // console.log(this.selectedValue);
   }
 
   createSelectHead() {
     const head = new ConstructDOM("div", ["select__header"]);
-    head.elem.addEventListener("click", (e) => {
+    head.elem.addEventListener("click", () => {
       this.clickHeadHandler();
+    });
+    head.elem.addEventListener("keydown", (ev) => {
+      this.keyDownHandler(ev, () => {
+        this.elem.classList.add("is-active");
+      });
     });
     head.setAttr({ "tabindex": 0 });
     head.setContent(this.headText);
@@ -46,7 +50,19 @@ export class Select extends ConstructDOM {
 
     input.elem.addEventListener("change", (ev) => {
       this.clickHeadHandler();
-      this.changeItemHandler(ev);
+      this.changeItemHandler(ev.target.value);
+    });
+
+    label.elem.addEventListener("keydown", (ev) => {
+      this.keyDownHandler(
+        ev,
+        (ev) => {
+          const input = ev.srcElement.previousSibling;
+          this.clickHeadHandler();
+          this.changeItemHandler(input.value);
+        },
+        ["Enter", "NumpadEnter", "Space"],
+      );
     });
 
     const uniqId = generateUniqId("select-item");
@@ -68,19 +84,33 @@ export class Select extends ConstructDOM {
   }
 
   clickHeadHandler() {
-    // TODO: спрацьовує при одному кліку декілька разів, потрібно змінити логіку
-    window.addEventListener("click", (ev) => {
-      if (!this.elem.contains(ev.target)) {
-        console.log("click out");
-        this.elem.classList.toggle("is-active");
-      }
-    });
+    closeByAnyClick(() => {
+      this.elem.classList.remove("is-active");
+    }, this.elem);
+
     this.elem.classList.toggle("is-active");
   }
 
-  changeItemHandler(ev) {
-    this.selectItems = ev.target.value;
-    this.updateSelectHead(this.selectItems);
+  changeItemHandler(value) {
+    this.selectedValue = value;
+    this.updateSelectHead(this.selectedValue);
     // TODO: спробувати додати Proxy для оновлення даних
+  }
+
+  keyDownHeadHandler(ev) {
+    const code = ev.code;
+    const keys = ["Enter", "NumpadEnter"];
+  }
+
+  keyDownHandler(ev, cb, keys = ["Enter", "NumpadEnter"]) {
+    const code = ev.code;
+    if (keys.includes(code)) {
+      cb(ev);
+    }
+  }
+
+  resetValue() {
+    this.selectedValue = this.selectItems[0]["value"];
+    this.updateSelectHead(this.selectedValue);
   }
 }

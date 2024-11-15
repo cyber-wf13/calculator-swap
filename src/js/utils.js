@@ -9,3 +9,12 @@ export function generateUniqId(prefix = "", length = 10) {
     )
   );
 }
+
+export function closeByAnyClick(cb, elem) {
+  document.addEventListener("click", (ev) => {
+    if (!elem.contains(ev.target)) {
+      cb();
+      return;
+    }
+  });
+}

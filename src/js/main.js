@@ -1,5 +1,6 @@
 import { Calc } from "./form/Calc";
 import { Select } from "./form/Select";
+import { closeByAnyClick } from "./utils";
 
 const calc = new Calc(
   "#calc",
@@ -9,13 +10,16 @@ const calc = new Calc(
   document.querySelector("#rotate"),
 );
 
-const select = new Select([
+const paySelect = new Select([
   { "value": "trx", "text": "trx" },
   { "value": "nxm", "text": "nxm", "selected": true },
 ]);
+const receiveSelect = new Select([
+  { "value": "trx", "text": "trx", "selected": true },
+  { "value": "nxm", "text": "nxm" },
+]);
 
 const payInput = document.querySelector("#pay");
-payInput.after(select.elem);
-// console.log(payInput);
-
-// console.log(select.elem);
+const receiveInput = document.querySelector("#receive");
+payInput.after(paySelect.elem);
+receiveInput.after(receiveSelect.elem);
