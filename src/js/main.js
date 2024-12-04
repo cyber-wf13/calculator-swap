@@ -11,21 +11,30 @@ const calc = new Calc(
   document.querySelector("#rotate"),
 );
 
-const paySelect = new Select([
-  { "value": "trx", "text": "trx" },
-  { "value": "nxm", "text": "nxm", "selected": true },
-]);
-const receiveSelect = new Select([
-  { "value": "trx", "text": "trx", "selected": true },
-  { "value": "nxm", "text": "nxm" },
-]);
-
-const payInput = document.querySelector("#pay");
-const receiveInput = document.querySelector("#receive");
-payInput.after(paySelect.elem);
-receiveInput.after(receiveSelect.elem);
-
 const ex = new Exchange();
-ex.fillCurrencyExchange(51).then((curr) => {
-  console.log(curr);
+ex.fillCurrencyInfo().then((info) => {
+  const paySelect = new Select(
+    info.map((item) => {
+      return {
+        "value": item.code,
+        "text": item.name,
+      };
+    }),
+  );
+
+  const payInput = document.querySelector("#pay");
+  paySelect.elem.addEventListener("select", (e) => {
+    console.log("select", e.detail.value);
+    ex.fillCurrencyExchange(e.detail.value).then((curr) => {
+      console.log(curr);
+    });
+  });
+  payInput.after(paySelect.elem);
 });
+
+// const receiveSelect = new Select([
+//   { "value": "trx", "text": "trx", "selected": true },
+//   { "value": "nxm", "text": "nxm" },
+// ]);
+// const receiveInput = document.querySelector("#receive");
+// receiveInput.after(receiveSelect.elem);

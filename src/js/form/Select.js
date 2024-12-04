@@ -49,8 +49,10 @@ export class Select extends ConstructDOM {
     }
 
     input.elem.addEventListener("change", (ev) => {
+      ev.preventDefault();
       this.clickHeadHandler();
-      this.changeItemHandler(ev.target.value);
+      this.changeItemHandler(ev.target.value, item.text);
+      this.dispatchSelectEvent(ev.target.value);
     });
 
     label.elem.addEventListener("keydown", (ev) => {
@@ -59,7 +61,8 @@ export class Select extends ConstructDOM {
         (ev) => {
           const input = ev.srcElement.previousSibling;
           this.clickHeadHandler();
-          this.changeItemHandler(input.value);
+          this.changeItemHandler(input.value, item.text);
+          this.dispatchSelectEvent(input.value);
         },
         ["Enter", "NumpadEnter", "Space"],
       );
@@ -91,15 +94,10 @@ export class Select extends ConstructDOM {
     this.elem.classList.toggle("is-active");
   }
 
-  changeItemHandler(value) {
+  changeItemHandler(value, text) {
     this.selectedValue = value;
-    this.updateSelectHead(this.selectedValue);
+    this.updateSelectHead(text);
     // TODO: спробувати додати Proxy для оновлення даних
-  }
-
-  keyDownHeadHandler(ev) {
-    const code = ev.code;
-    const keys = ["Enter", "NumpadEnter"];
   }
 
   keyDownHandler(ev, cb, keys = ["Enter", "NumpadEnter"]) {
@@ -112,5 +110,15 @@ export class Select extends ConstructDOM {
   resetValue() {
     this.selectedValue = this.selectItems[0]["value"];
     this.updateSelectHead(this.selectedValue);
+  }
+
+  dispatchSelectEvent(value, type = "select") {
+    const customEvent = new CustomEvent(type, {
+      bubbles: true,
+      detail: {
+        "value": value,
+      },
+    });
+    this.elem.dispatchEvent(customEvent);
   }
 }

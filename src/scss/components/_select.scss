@@ -46,6 +46,8 @@
     box-shadow: #c8d2e1 0px 1px 4px 0px;
     position: absolute;
     top: -15px;
+    overflow-y: auto;
+    height: 300px;
     // top: 50px;
     // display: flex;
     flex-direction: column;
@@ -53,7 +55,7 @@
     align-items: flex-start;
     display: none;
     z-index: 999;
-    width: 75px;
+    // width: 75px;
   }
   &__item {
     border-radius: 15px;

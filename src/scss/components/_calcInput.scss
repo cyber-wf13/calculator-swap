@@ -41,4 +41,18 @@
     padding: 0px 25px 0px 0px;
     color: inherit;
   }
+  &__form-text {
+    border: 1px solid rgba(#000, 0.3);
+    border-radius: 22.5px;
+    font-size: 20px;
+    line-height: 1em;
+    background-color: transparent;
+    width: 60px;
+    text-align: center;
+    outline: none;
+    &:focus {
+      border-color: rgb(80, 195, 146);
+      box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
+    }
+  }
 }

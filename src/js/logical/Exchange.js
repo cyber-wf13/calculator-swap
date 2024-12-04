@@ -1,9 +1,9 @@
 export class Exchange {
   constructor() {
-    this.fillCurrencyInfo().then((info) => {
-      this.currencyInfo = info;
-      // console.log(this.currencyInfo);
-    });
+    // this.fillCurrencyInfo().then((info) => {
+    //   this.currencyInfo = info;
+    //   console.log(this.currencyInfo);
+    // });
   }
 
   async request(url) {
