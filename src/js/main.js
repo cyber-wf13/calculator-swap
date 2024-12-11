@@ -3,6 +3,7 @@ import { Select } from "./form/Select";
 import { Exchange } from "./logical/Exchange";
 import { closeByAnyClick } from "./utils";
 
+const ex = new Exchange();
 const calc = new Calc(
   "#calc",
   "#pay",
@@ -10,27 +11,23 @@ const calc = new Calc(
   document.querySelector("#reset"),
   document.querySelector("#rotate"),
 );
-
-const ex = new Exchange();
-ex.fillCurrencyInfo().then((info) => {
-  const paySelect = new Select(
-    info.map((item) => {
-      return {
-        "value": item.code,
-        "text": item.name,
-      };
-    }),
-  );
-
+ex.execRequestToAPI().then(() => {
+  const paySelect = new Select(ex.getCurrencyInfo());
   const payInput = document.querySelector("#pay");
-  paySelect.elem.addEventListener("select", (e) => {
-    console.log("select", e.detail.value);
-    ex.fillCurrencyExchange(e.detail.value).then((curr) => {
-      console.log(curr);
-    });
+
+  paySelect.elem.addEventListener("select", () => {
+    calc.setValue(ex.getExchange(paySelect.selectedValue, payInput.value));
+  });
+
+  calc.inputPay.addEventListener("input", () => {
+    calc.setValue(ex.getExchange(paySelect.selectedValue, payInput.value));
   });
   payInput.after(paySelect.elem);
 });
+
+// ex.fillCurrencyInfo().then((info) => {
+
+// });
 
 // const receiveSelect = new Select([
 //   { "value": "trx", "text": "trx", "selected": true },

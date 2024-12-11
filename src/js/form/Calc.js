@@ -10,15 +10,14 @@ export class Calc {
   }
 
   initEvents() {
-    this.inputPay.addEventListener("input", (e) =>
-      this.setValue(e.target.value),
-    );
+    // this.inputPay.addEventListener("input", (e) =>
+    //   this.setValue(this.calcValue),
+    // );
     this.resetBtn.addEventListener("click", () => this.reset());
   }
 
   setValue(currentValue) {
-    this.calcValue = currentValue;
-    this.inputReceive.value = this.calcValue;
+    this.inputReceive.value = currentValue;
   }
 
   validate() {}
@@ -27,6 +26,4 @@ export class Calc {
     this.setValue(0);
     this.inputPay.value = "";
   }
-
-  rotate() {}
 }

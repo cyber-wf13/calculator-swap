@@ -10,7 +10,7 @@ export class Select extends ConstructDOM {
 
     this.createSelectItems();
     this.head = this.createSelectHead();
-    this.selectedValue = this.headText;
+    this.selectedValue = selectItems[0].value;
   }
 
   createSelectHead() {
@@ -115,9 +115,9 @@ export class Select extends ConstructDOM {
   dispatchSelectEvent(value, type = "select") {
     const customEvent = new CustomEvent(type, {
       bubbles: true,
-      detail: {
-        "value": value,
-      },
+      // detail: {
+      //   "value": value,
+      // },
     });
     this.elem.dispatchEvent(customEvent);
   }

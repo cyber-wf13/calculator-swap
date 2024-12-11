@@ -1,9 +1,12 @@
 export class Exchange {
   constructor() {
-    // this.fillCurrencyInfo().then((info) => {
-    //   this.currencyInfo = info;
-    //   console.log(this.currencyInfo);
-    // });
+    this.currencyInfo = null;
+    this.currencyExchange = null;
+  }
+
+  async execRequestToAPI() {
+    this.currencyExchange = await this.fillCurrencyExchange();
+    this.currencyInfo = await this.fillCurrencyInfo();
   }
 
   async request(url) {
@@ -14,28 +17,40 @@ export class Exchange {
   }
 
   async fillCurrencyInfo() {
-    return this.request(
+    const response = await this.request(
       "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json",
-    ).then((res) => {
-      return res.map((currency) => {
-        return {
-          "name": currency["cc"],
-          "code": currency["r030"],
-          "txt": currency["txt"],
-        };
-      });
+    );
+    return response.map((currency) => {
+      return {
+        "name": currency["cc"],
+        "code": currency["r030"],
+        "txt": currency["txt"],
+      };
     });
   }
 
-  async fillCurrencyExchange(code) {
-    return this.request("http://localhost:3000/monobank.json").then(
-      (currency) => {
-        for (const idx in currency) {
-          if (currency[idx]["currencyCodeA"] == code) {
-            return currency[idx];
-          }
-        }
-      },
-    );
+  async fillCurrencyExchange() {
+    return await this.request("http://localhost:3000/monobank.json");
+  }
+
+  getExchange(code, sum) {
+    let rateCross = 0;
+    for (const idx in this.currencyExchange) {
+      if (this.currencyExchange[idx]["currencyCodeA"] == code) {
+        console.log(this.currencyExchange[idx]);
+        rateCross = this.currencyExchange[idx]["rateCross"];
+        break;
+      }
+    }
+    return rateCross * sum;
+  }
+
+  getCurrencyInfo() {
+    return this.currencyInfo.map((item) => {
+      return {
+        "value": item.code,
+        "text": item.name,
+      };
+    });
   }
 }
