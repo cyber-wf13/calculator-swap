@@ -37,7 +37,7 @@ export class Exchange {
     let rateCross = 0;
     for (const idx in this.currencyExchange) {
       if (this.currencyExchange[idx]["currencyCodeA"] == code) {
-        console.log(this.currencyExchange[idx]);
+        // console.log(this.currencyExchange[idx]);
         rateCross = this.currencyExchange[idx]["rateCross"];
         break;
       }

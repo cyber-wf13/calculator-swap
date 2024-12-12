@@ -9,19 +9,17 @@ const calc = new Calc(
   "#pay",
   "#receive",
   document.querySelector("#reset"),
-  document.querySelector("#rotate"),
 );
 ex.execRequestToAPI().then(() => {
   const paySelect = new Select(ex.getCurrencyInfo());
   const payInput = document.querySelector("#pay");
 
-  paySelect.elem.addEventListener("select", () => {
+  const getExchangeWrap = () => {
     calc.setValue(ex.getExchange(paySelect.selectedValue, payInput.value));
-  });
+  };
 
-  calc.inputPay.addEventListener("input", () => {
-    calc.setValue(ex.getExchange(paySelect.selectedValue, payInput.value));
-  });
+  paySelect.elem.addEventListener("select", getExchangeWrap);
+  calc.inputPay.addEventListener("input", getExchangeWrap);
   payInput.after(paySelect.elem);
 });
 
