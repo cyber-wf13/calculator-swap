@@ -1,4 +1,5 @@
 import { Calc } from "./form/Calc";
+import { CalcUAH } from "./form/CalcUAH";
 import { Select } from "./form/Select";
 import { Exchange } from "./logical/Exchange";
 
@@ -26,4 +27,8 @@ ex.execRequestToAPI().then(() => {
     paySelect.resetValue();
     calc.reset();
   });
+
+  const calcUah = new CalcUAH(ex.getTopCurrency());
+  calcUah.createStructure();
+  calcUah.insertToBlock(".calc__wrapper");
 });

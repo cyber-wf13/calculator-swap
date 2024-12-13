@@ -6,7 +6,10 @@ export class Exchange {
 
   async execRequestToAPI() {
     this.currencyExchange = await this.fillCurrencyExchange();
+    this.topCurrencyExchange = this.currencyExchange.slice(0, 3);
+    this.currencyExchange = this.currencyExchange.slice(3);
     this.currencyInfo = await this.fillCurrencyInfo();
+    this.currencyInfo = this.filterCurrencyList();
   }
 
   async request(url) {
@@ -48,6 +51,7 @@ export class Exchange {
     const codeList = this.currencyExchange.map((item) => {
       return item["currencyCodeA"];
     });
+
     return this.currencyInfo
       .filter((item) => {
         return codeList.some((code) => {
@@ -65,8 +69,30 @@ export class Exchange {
       });
   }
 
+  getTopCurrency() {
+    const topCurrencyExchangeFormat = {};
+    this.topCurrencyExchange.forEach((item) => {
+      if (item["currencyCodeA"] == 840 && item["currencyCodeB"] == 980) {
+        topCurrencyExchangeFormat["usd-uah"] = Object.assign(
+          { "name": "USD to UAH" },
+          item,
+        );
+      } else if (item["currencyCodeA"] == 978 && item["currencyCodeB"] == 980) {
+        topCurrencyExchangeFormat["eur-uah"] = Object.assign(
+          { "name": "EUR to UAH" },
+          item,
+        );
+      } else {
+        topCurrencyExchangeFormat["eur-usd"] = Object.assign(
+          { "name": "EUR to USD" },
+          item,
+        );
+      }
+    });
+    return topCurrencyExchangeFormat;
+  }
+
   getCurrencyInfo() {
-    this.currencyInfo = this.filterCurrencyList();
     return this.currencyInfo.map((item) => {
       return {
         "value": item.code,
