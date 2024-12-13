@@ -1,7 +1,6 @@
 import { Calc } from "./form/Calc";
 import { Select } from "./form/Select";
 import { Exchange } from "./logical/Exchange";
-import { closeByAnyClick } from "./utils";
 
 const ex = new Exchange();
 const calc = new Calc(
@@ -10,6 +9,7 @@ const calc = new Calc(
   "#receive",
   document.querySelector("#reset"),
 );
+
 ex.execRequestToAPI().then(() => {
   const paySelect = new Select(ex.getCurrencyInfo());
   const payInput = document.querySelector("#pay");
@@ -21,15 +21,9 @@ ex.execRequestToAPI().then(() => {
   paySelect.elem.addEventListener("select", getExchangeWrap);
   calc.inputPay.addEventListener("input", getExchangeWrap);
   payInput.after(paySelect.elem);
+
+  calc.resetBtn.addEventListener("click", () => {
+    paySelect.resetValue();
+    calc.reset();
+  });
 });
-
-// ex.fillCurrencyInfo().then((info) => {
-
-// });
-
-// const receiveSelect = new Select([
-//   { "value": "trx", "text": "trx", "selected": true },
-//   { "value": "nxm", "text": "nxm" },
-// ]);
-// const receiveInput = document.querySelector("#receive");
-// receiveInput.after(receiveSelect.elem);

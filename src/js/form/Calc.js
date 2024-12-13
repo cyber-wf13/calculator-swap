@@ -6,11 +6,6 @@ export class Calc {
     this.inputPayParrent = this.inputPay.closest(".calc-input");
     this.calcValue = this.inputPay.value;
     this.resetBtn = resetBtn;
-    this.initEvents();
-  }
-
-  initEvents() {
-    this.resetBtn.addEventListener("click", () => this.reset());
   }
 
   setValue(currentValue) {

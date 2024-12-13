@@ -74,15 +74,16 @@
     margin: 5px 0;
     transition: 0.3s;
     cursor: pointer;
-    // &:focus {
-    //   background: $active;
-    //   box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
-    //   color: #fff;
-    // }
-    // &:hover {
-    //   background: $active;
-    //   color: #fff;
-    // }
+    height: 35px;
+    width: 35px;
+    &:focus {
+      box-shadow: rgb(174, 240, 200) 0px 0px 0px 3px;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        transform: rotate(-180deg);
+      }
+    }
   }
   &__btn-connect {
     border: 1px solid $borderColor;

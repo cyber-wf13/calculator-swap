@@ -109,15 +109,12 @@ export class Select extends ConstructDOM {
 
   resetValue() {
     this.selectedValue = this.selectItems[0]["value"];
-    this.updateSelectHead(this.selectedValue);
+    this.updateSelectHead(this.selectItems[0]["text"]);
   }
 
   dispatchSelectEvent(value, type = "select") {
     const customEvent = new CustomEvent(type, {
       bubbles: true,
-      // detail: {
-      //   "value": value,
-      // },
     });
     this.elem.dispatchEvent(customEvent);
   }
