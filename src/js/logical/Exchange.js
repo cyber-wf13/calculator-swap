@@ -33,7 +33,7 @@ export class Exchange {
   }
 
   async fillCurrencyExchange() {
-    return await this.request("http://localhost:3000/monobank.json");
+    return await this.request("monobank.json");
   }
 
   getExchange(code, sum) {
