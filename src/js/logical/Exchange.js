@@ -37,7 +37,6 @@ export class Exchange {
     let rateCross = 0;
     for (const idx in this.currencyExchange) {
       if (this.currencyExchange[idx]["currencyCodeA"] == code) {
-        // console.log(this.currencyExchange[idx]);
         rateCross = this.currencyExchange[idx]["rateCross"];
         break;
       }
@@ -45,7 +44,29 @@ export class Exchange {
     return rateCross * sum;
   }
 
+  filterCurrencyList() {
+    const codeList = this.currencyExchange.map((item) => {
+      return item["currencyCodeA"];
+    });
+    return this.currencyInfo
+      .filter((item) => {
+        return codeList.some((code) => {
+          return code === item.code;
+        });
+      })
+      .sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+
+        if (a.name < b.name) {
+          return -1;
+        }
+      });
+  }
+
   getCurrencyInfo() {
+    this.currencyInfo = this.filterCurrencyList();
     return this.currencyInfo.map((item) => {
       return {
         "value": item.code,
