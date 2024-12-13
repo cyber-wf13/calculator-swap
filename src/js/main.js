@@ -32,3 +32,10 @@ ex.execRequestToAPI().then(() => {
   calcUah.createStructure();
   calcUah.insertToBlock(".calc__wrapper");
 });
+
+const menuBtn = document.querySelector(".menu-hamburger");
+const menu = document.querySelector(".menu");
+menuBtn.addEventListener("click", () => {
+  document.body.classList.toggle("_block");
+  menu.classList.toggle("menu--mobile");
+});
